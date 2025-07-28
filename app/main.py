@@ -34,8 +34,8 @@ def health():
     return {"status": "ok"}
 
 @app.post("/solve")
-async def solve(file: UploadFile = File(...)):
-    img_bytes = await file.read()
+async def solve(image: UploadFile = File(...)):
+    img_bytes = await image.read()
     b64 = base64.b64encode(img_bytes).decode()
     data_uri = f"data:image/png;base64,{b64}"
     resp = await client.chat.completions.create(
