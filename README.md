@@ -1,9 +1,10 @@
 ---
-title: VibeMath – 2-second math solver
-emoji: 📐
+title: Vibe-Math
+emoji: 🧮
 colorFrom: green
 colorTo: blue
-sdk: docker
+sdk: gradio
+app_file: app/main.py
 pinned: false
 ---
 
