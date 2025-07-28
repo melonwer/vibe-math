@@ -1,1 +1,8 @@
-# VibeMath – 2-second math solver
+---
+title: Vibe Math
+emoji: 🌖
+colorFrom: green
+colorTo: indigo
+sdk: docker
+pinned: false
+---
