@@ -7,7 +7,7 @@ from fastapi.responses import HTMLResponse
 
 client = AsyncOpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta",
-    api_key="GEMINI_API_KEY" 
+    api_key = os.getenv("GEMINI_API_KEY")
 )
 
 app = FastAPI()
