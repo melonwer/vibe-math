@@ -3,17 +3,24 @@ title: Vibe-Math
 emoji: 🧮
 colorFrom: green
 colorTo: blue
-sdk: gradio
-app_file: app/main.py
+sdk: docker
 pinned: false
 ---
 
-# VibeMath – 2-second math solver
+# Vibe-Math – 2-second math solver
 
-Snap any handwritten math → get the answer + explanation in two seconds.
+Snap any handwritten equation and get the answer + explanation instantly.
 
-### Live demo
-<https://huggingface.co/spaces/d4ydy/vibe-math>
+## Endpoints
 
-### API
-`POST /solve` expects multipart/form-data with an image file named `file`.
+| Path | Method | Description |
+|---|---|---|
+| `/solve` | `POST` | Upload an image (`multipart/form-data`) → JSON `{answer}` |
+| `/health` | `GET` | Health check |
+| `/docs` | `GET` | Swagger UI |
+
+## Example usage
+
+```bash
+curl -X POST https://d4ydy-vibe-math.hf.space/solve \
+  -F "file=@equation.png"
