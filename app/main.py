@@ -2,7 +2,8 @@ import base64, os, json, httpx
 from fastapi import FastAPI, UploadFile, File
 from openai import AsyncOpenAI
 from fastapi.middleware.cors import CORSMiddleware
-
+from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import HTMLResponse
 
 client = AsyncOpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta",
@@ -15,6 +16,22 @@ SYSTEM_PROMPT = (
     "You are a concise math tutor. Given an image of a handwritten problem, "
     "output the final answer first, then a 1-2 sentence explanation."
 )
+
+
+@app.get("/", response_class=HTMLResponse)
+def home():
+    return """
+    <h1>Vibe-Math 🧮</h1>
+    <p>Drag & drop an image or POST to <code>/solve</code></p>
+    <form action="/solve" method="post" enctype="multipart/form-data">
+        <input name="file" type="file" accept="image/*"/>
+        <button type="submit">Solve</button>
+    </form>
+    """
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 @app.post("/solve")
 async def solve(file: UploadFile = File(...)):
