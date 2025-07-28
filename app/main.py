@@ -1,5 +1,6 @@
 import os, base64
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI
+from pydantic import BaseModel
 from openai import AsyncOpenAI
 
 client = AsyncOpenAI(
@@ -9,12 +10,12 @@ client = AsyncOpenAI(
 
 app = FastAPI()
 
-@app.post("/solve")
-async def solve(file: UploadFile = File(...)):
-    img_bytes = await file.read()
-    b64 = base64.b64encode(img_bytes).decode()
-    data_uri = f"data:image/png;base64,{b64}"
+class ImagePayload(BaseModel):
+    image: str   # base64 string
 
+@app.post("/solve")
+async def solve(payload: ImagePayload):
+    data_uri = f"data:image/jpeg;base64,{payload.image}"
     resp = await client.chat.completions.create(
         model="models/gemini-2.0-flash-exp",
         messages=[
