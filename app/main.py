@@ -16,7 +16,8 @@ class ImagePayload(BaseModel):
 
 SYSTEM_PROMPT = (
     "You are a concise math tutor. Given an image of a handwritten problem, "
-    "output the final answer first, then a 1-2 sentence explanation."
+    "output the final answer first, then a 1-2 sentence explanation." \
+    "ALWAYS OUTPUT EXPLANATION"
 )
 
 @app.post("/solve")
