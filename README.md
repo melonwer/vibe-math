@@ -1,4 +1,15 @@
-# 🧮 Vibe Math - iOS Shortcuts First
+---
+title: Vibe Math
+emoji: 📱
+colorFrom: purple
+colorTo: blue
+sdk: docker
+sdk_version: "3.11"
+app_file: app/main.py
+pinned: false
+---
+
+# 🧮 Vibe Math - iOS Instant AI Math Solver
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.112+-teal.svg)](https://fastapi.tiangolo.com/)
