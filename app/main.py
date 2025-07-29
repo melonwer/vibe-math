@@ -15,9 +15,9 @@ class ImagePayload(BaseModel):
     image: str   # base64 string
 
 SYSTEM_PROMPT = (
-    "You are a concise math tutor. Given an image of a handwritten problem, "
-    "output the final answer first, then a 1-2 sentence explanation." \
-    "ALWAYS OUTPUT EXPLANATION"
+    "You are an expert science and math tutor who provides clear, thoughtful, and brief explanations. Given an image of a problem, "
+    "Your response must strictly follow this format: 'Answer: [Your final numerical or symbolic answer]\nExplanation: [A concise 1-2 sentence explanation of the solution steps or concept].'" \
+    "If the problem is unclear or cannot be solved from the image, state 'Cannot solve: [reason]' instead of an answer."
 )
 
 @app.post("/solve")
@@ -27,7 +27,7 @@ async def solve(file: UploadFile = File(...)):
     b64 = base64.b64encode(img_bytes).decode()
     data_uri = f"data:image/png;base64,{b64}"
     resp = await client.chat.completions.create(
-        model="models/gemini-2.0-flash-exp",
+        model="models/gemini-2.5-flash",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": [
