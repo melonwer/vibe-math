@@ -1,0 +1,138 @@
+{
+  "WFWorkflowActions": [
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+      "WFWorkflowActionParameters": {
+        "WFMenuItems": [
+          "Take Photo",
+          "Select from Photos",
+          "Use Clipboard"
+        ],
+        "WFMenuPrompt": "How would you like to provide the math problem?",
+        "WFControlFlowMode": 0
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.takephoto",
+      "WFWorkflowActionParameters": {
+        "WFPhotoMediaType": "Image",
+        "WFPhotoShowPreview": true
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getlatestphotos",
+      "WFWorkflowActionParameters": {
+        "WFGetLatestPhotosCount": 1,
+        "WFGetLatestPhotosActionType": 0
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getclipboard",
+      "WFWorkflowActionParameters": {}
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.base64encode",
+      "WFWorkflowActionParameters": {
+        "WFEncodeMode": 0
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.askforinput",
+      "WFWorkflowActionParameters": {
+        "WFInputType": 0,
+        "WFAskActionPrompt": "Enter your Google Gemini API key (starts with AIza...)",
+        "WFAskActionDefault": ""
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+      "WFWorkflowActionParameters": {
+        "WFVariableName": "API_Key"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getvariable",
+      "WFWorkflowActionParameters": {
+        "WFVariableName": "API_Key"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getmyshortcuts",
+      "WFWorkflowActionParameters": {
+        "WFGetMyShortcutsActionType": 0
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+      "WFWorkflowActionParameters": {
+        "WFURLActionURL": "https://your-backend.com/api/solve-with-key"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getcontentsofurl",
+      "WFWorkflowActionParameters": {
+        "WFHTTPMethod": "POST",
+        "WFHTTPHeaders": {
+          "Content-Type": "application/json"
+        },
+        "WFHTTPBody": {
+          "image": "{Base64 Encoded Image}",
+          "api_key": "{API_Key}"
+        }
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getvalueforkey",
+      "WFWorkflowActionParameters": {
+        "WFDictionaryKey": "answer"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.showresult",
+      "WFWorkflowActionParameters": {
+        "WFTextActionText": "{Answer}"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.speaktext",
+      "WFWorkflowActionParameters": {
+        "WFSpeakTextRate": 0.5,
+        "WFSpeakTextLanguage": "en-US"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.createnote",
+      "WFWorkflowActionParameters": {
+        "WFNoteTitle": "Vibe Math Result",
+        "WFNoteBody": "Problem: {Image}\nSolution: {Answer}\nDate: {Current Date}"
+      }
+    }
+  ],
+  "WFWorkflowClientVersion": "900",
+  "WFWorkflowIcon": {
+    "WFWorkflowIconStartColor": 4274264319,
+    "WFWorkflowIconGlyphNumber": 59776
+  },
+  "WFWorkflowTypes": [
+    "ActionExtension",
+    "NCWidget"
+  ],
+  "WFWorkflowInputContentItemClasses": [
+    "WFImageContentItem",
+    "WFURLContentItem",
+    "WFPDFContentItem"
+  ],
+  "WFWorkflowMinimumClientVersion": 900,
+  "WFWorkflowName": "Vibe Math",
+  "WFWorkflowNoInputBehavior": {
+    "ShowInShortcutWidget": true
+  },
+  "WFWorkflowHasOutputFallback": false,
+  "WFWorkflowHasShortcutInputVariables": true,
+  "WFWorkflowOutputContentItemClasses": [
+    "WFStringContentItem"
+  ],
+  "WFWorkflowHasAskWhenRun": true,
+  "WFWorkflowHasNotes": true,
+  "WFWorkflowNotes": "Vibe Math - Instant math problem solving using AI\n\nInstructions:\n1. Run the shortcut\n2. Choose how to provide the math problem (camera, photos, or clipboard)\n3. Enter your Google Gemini API key when prompted (first time only)\n4. Get instant results with explanations\n\nRequirements:\n- iOS 14 or later\n- Google Gemini API key (free)\n- Internet connection\n\nSupport: https://github.com/yourusername/vibe-math/issues"
+}
