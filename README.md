@@ -23,4 +23,4 @@ Snap any handwritten equation and get the answer + explanation instantly.
 
 ```bash
 curl -X POST https://d4ydy-vibe-math.hf.space/solve \
-  -F "file=@equation.png"
+  -F "file=@equation.png"# bump
