@@ -11,9 +11,6 @@ from pydantic import BaseModel, validator
 from openai import AsyncOpenAI, APIError, APIConnectionError, RateLimitError
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
-
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -21,22 +18,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Environment validation
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    logger.error("GEMINI_API_KEY environment variable is not set")
-    raise RuntimeError("GEMINI_API_KEY environment variable is required")
+# Load environment variables
+load_dotenv()
+logger.info("Environment variables loaded from .env file")
 
 # Configuration
 MODEL_NAME = "gemini-1.5-flash"
 MAX_TOKENS = 500
 TEMPERATURE = 0.2
 
-# Initialize OpenAI client
-client = AsyncOpenAI(
-    base_url="https://generativelanguage.googleapis.com/v1beta",
-    api_key=GEMINI_API_KEY
-)
+# Global variables for client and API key
+client = None
+GEMINI_API_KEY = None
 
 # System prompt
 SYSTEM_PROMPT = (
@@ -79,7 +72,29 @@ class ErrorResponse(BaseModel):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Handle application startup and shutdown"""
+    global client, GEMINI_API_KEY
+    
     logger.info("Starting Vibe Math API")
+    
+    # Load and validate environment variables
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    if not GEMINI_API_KEY:
+        logger.error("GEMINI_API_KEY environment variable is not set")
+        raise RuntimeError("GEMINI_API_KEY environment variable is required")
+    
+    logger.info("Environment variables loaded successfully")
+    
+    # Initialize OpenAI client
+    try:
+        client = AsyncOpenAI(
+            base_url="https://generativelanguage.googleapis.com/v1beta",
+            api_key=GEMINI_API_KEY
+        )
+        logger.info("OpenAI client initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize OpenAI client: {str(e)}")
+        raise RuntimeError(f"Failed to initialize OpenAI client: {str(e)}")
+    
     yield
     logger.info("Shutting down Vibe Math API")
 
@@ -232,6 +247,7 @@ async def call_gemini_api(image_uri: str) -> str:
 @app.get("/", tags=["Health"])
 async def root():
     """Root endpoint with API information"""
+    logger.info("Root endpoint accessed - API is running")
     return {
         "message": "Vibe Math API is running",
         "version": "1.0.0",
@@ -241,10 +257,36 @@ async def root():
 @app.get("/health", tags=["Health"])
 async def health():
     """Health check endpoint"""
-    return {
-        "status": "healthy",
-        "timestamp": logger.handlers[0].baseFilename if logger.handlers else None
-    }
+    logger.info("Health check endpoint accessed")
+    try:
+        # Safely get log file information if handlers exist
+        log_file_info = None
+        if logger.handlers and len(logger.handlers) > 0:
+            try:
+                handler = logger.handlers[0]
+                if hasattr(handler, 'baseFilename'):
+                    log_file_info = handler.baseFilename
+                elif hasattr(handler, 'stream') and hasattr(handler.stream, 'name'):
+                    log_file_info = handler.stream.name
+            except Exception as e:
+                logger.warning(f"Could not get log file info: {str(e)}")
+                log_file_info = "unknown"
+        
+        logger.info("Health check completed successfully")
+        return {
+            "status": "healthy",
+            "timestamp": log_file_info,
+            "client_initialized": client is not None,
+            "api_key_set": GEMINI_API_KEY is not None
+        }
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        return {
+            "status": "degraded",
+            "error": str(e),
+            "client_initialized": client is not None,
+            "api_key_set": GEMINI_API_KEY is not None
+        }
 
 @app.post("/solve", tags=["Solve"])
 async def solve(file: UploadFile = File(...)):

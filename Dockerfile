@@ -27,9 +27,7 @@ FROM python:3.11-slim as production
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PORT=8000 \
-    HOST=0.0.0.0 \
-    GRADIO_SERVER_NAME=0.0.0.0 \
-    GRADIO_SERVER_PORT=8000
+    HOST=0.0.0.0
 
 # Create non-root user for security
 RUN groupadd -r appuser && useradd -r -g appuser appuser
