@@ -20,9 +20,9 @@ This guide will help you set up Vibe Math on your iPhone or iPad using iOS Short
 </div>
 
 ### Step 3: First-Time Setup
-1. **Run the shortcut** for the first time
-2. **Paste your API key** when prompted
-3. **Allow permissions** for camera and photos
+1. **Tap three dots** for the setup
+2. **Replace your API key** with **GEMINI_API_KEY** at Text box
+3. **Run the script** for the first time
 4. **Start solving** math problems instantly!
 
 ## 📋 How to Use
@@ -214,7 +214,8 @@ Enable text-to-speech:
 <div align="center">
   <p><strong>Ready to solve math problems instantly?</strong></p>
   <p>
-    <a href="https://www.icloud.com/shortcuts/c22a63e866814b4c9b5f59fe574e3131">📱 Download iOS Shortcut</a> |
-    <a href="https://huggingface.co/spaces/d4ydy/vibe-math">🚀 Deploy Backend</a>
+    <a href="https://www.icloud.com/shortcuts/a7beba54aa404434b2d0d6b82b590ece">📱 Get the iOS Shortcut</a> | 
+    <a href="https://vercel.com/melonwers-projects/vibe-math-api">🚀 Try on Vercel App</a> | 
+    <a href="https://huggingface.co/spaces/d4ydy/vibe-math">🤗 Try on HuggingFace Spaces</a>
   </p>
 </div>

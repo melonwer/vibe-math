@@ -27,12 +27,13 @@ The fastest way to use Vibe Math is through **iOS Shortcuts** - no coding requir
 
 1. **Get your free API key** from [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. **Install the Vibe Math Shortcut**:
-   - 📲 [Download Vibe Math Shortcut](https://www.icloud.com/shortcuts/c22a63e866814b4c9b5f59fe574e3131)
+   - 📲 [Download Vibe Math Shortcut](https://www.icloud.com/shortcuts/a7beba54aa404434b2d0d6b82b590ece)
    - 🔗 Or scan the QR code below:
    
    <div align="center">
-     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.icloud.com%2Fshortcuts%2F8f3a4b2c5d4e6f7a8b9c0d1e2f3a4b5c" alt="Vibe Math iOS Shortcut QR Code" width="200"/>
+     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.icloud.com%2Fshortcuts%2F8fa7beba54aa404434b2d0d6b82b590ece" alt="Vibe Math iOS Shortcut QR Code" width="200"/>
    </div>
+   
 
 3. **First-time setup**: Tap three dots for the setup
 4. **Replace GEMINI_API_KEY** with **your API key** at Text box
