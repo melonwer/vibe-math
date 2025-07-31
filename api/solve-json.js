@@ -9,7 +9,7 @@ const corsHandler = cors({
 });
 
 // Configuration
-const MODEL_NAME = "gemini-1.5-flash";
+const MODEL_NAME = "gemini-2.5-flash";
 const MAX_TOKENS = 500;
 const TEMPERATURE = 0.2;
 
