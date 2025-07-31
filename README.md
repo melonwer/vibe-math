@@ -31,7 +31,7 @@ The fastest way to use Vibe Math is through **iOS Shortcuts** - no coding requir
    - 🔗 Or scan the QR code below:
    
    <div align="center">
-     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.icloud.com%2Fshortcuts%2F8fa7beba54aa404434b2d0d6b82b590ece" alt="Vibe Math iOS Shortcut QR Code" width="200"/>
+     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.icloud.com%2Fshortcuts%2Fa7beba54aa404434b2d0d6b82b590ece" alt="Vibe Math iOS Shortcut QR Code" width="200"/>
    </div>
    
 
@@ -43,14 +43,18 @@ The fastest way to use Vibe Math is through **iOS Shortcuts** - no coding requir
 
 1. **Take a photo** of any math problem (handwritten or printed)
 2. **iOS Shortcuts** automatically processes the image
-3. **HuggingFace Spaces** hosts the backend service
+3. **Vercel App** hosts the backend service
 4. **Google Gemini AI** analyzes and solves the problem
 5. **Get results** with step-by-step explanations in seconds
 
 ## 🛠️ Alternative Setup Methods
 
-### Method 1: HuggingFace Spaces (Recommended Backend)
-Deploy your own backend in minutes:
+### Method 1: Vercel App (Recommended)
+Deploy your own backend in minutes using the guide in [deployment guide](DEPLOYMENT_GUIDE.md)
+
+
+
+### Alternative - Deploy on HuggingFace Spaces
 
 [![Deploy to HuggingFace Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/deploy-to-spaces-lg.svg)](https://huggingface.co/spaces/new?template=d4ydy/vibe-math)
 
@@ -110,7 +114,7 @@ docker-compose up --build
 ### 📋 iOS Shortcuts Setup Guide
 
 #### Option 1: One-Click Install (Recommended)
-- **Download**: [Vibe Math Shortcut](https://www.icloud.com/shortcuts/c22a63e866814b4c9b5f59fe574e3131)
+- **Download**: [Vibe Math Shortcut](https://www.icloud.com/shortcuts/a7beba54aa404434b2d0d6b82b590ece)
 - **Setup**: Enter your Google Gemini API key once
 - **Use**: Share any image to the shortcut or run from Shortcuts app
 
@@ -207,16 +211,8 @@ make lint
 make format
 ```
 
-## 📸 Screenshots & Demo
-
-### iOS Shortcuts in Action
-<div align="center">
-  <img src="https://via.placeholder.com/300x600/007AFF/FFFFFF?text=iOS+Shortcuts+Demo" alt="iOS Shortcuts Demo" width="300"/>
-  <br>
-  <em>Take a photo → Get instant math solutions</em>
-</div>
-
 ### Live Demo
+- **Vercel App**: [Try it now](https://vercel.com/melonwers-projects/vibe-math-api)
 - **HuggingFace Spaces**: [Try it now](https://huggingface.co/spaces/d4ydy/vibe-math)
 - **API Playground**: Interactive Swagger UI at `/docs`
 
@@ -252,7 +248,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Google Gemini API** for providing the powerful AI model
 - **FastAPI** for the excellent web framework
-- **HuggingFace Spaces** for hosting and deployment
+- **Vercel App** for hosting and deployment
 - **iOS Shortcuts** community for inspiration
 - **OpenAI Python SDK** for seamless API integration
 
@@ -266,7 +262,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
   <p>Made with ❤️ by melonwer</p>
   <p>
-    <a href="https://www.icloud.com/shortcuts/c22a63e866814b4c9b5f59fe574e3131">📱 Get the iOS Shortcut</a> | 
-    <a href="https://huggingface.co/spaces/d4ydy/vibe-math">🚀 Try on HuggingFace Spaces</a>
+    <a href="https://www.icloud.com/shortcuts/a7beba54aa404434b2d0d6b82b590ece">📱 Get the iOS Shortcut</a> | 
+    <a href="https://vercel.com/melonwers-projects/vibe-math-api">🚀 Try on Vercel App</a> | 
+    <a href="https://huggingface.co/spaces/d4ydy/vibe-math">🤗 Try on HuggingFace Spaces</a>
   </p>
 </div>
