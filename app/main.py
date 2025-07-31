@@ -23,7 +23,7 @@ load_dotenv()
 logger.info("Environment variables loaded from .env file")
 
 # Configuration
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "models/gemini-2.5-flash"
 MAX_TOKENS = 500
 TEMPERATURE = 0.2
 
