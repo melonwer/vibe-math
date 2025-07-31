@@ -1,0 +1,26 @@
+{
+  "name": "vibe-math-api",
+  "version": "1.0.0",
+  "description": "Serverless API for solving math problems using Google Gemini AI",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.5.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "vercel": "^34.2.4"
+  },
+  "keywords": [
+    "math",
+    "ai",
+    "gemini",
+    "serverless",
+    "vercel"
+  ],
+  "author": "Vibe Math Team",
+  "license": "MIT"
+}
